@@ -1,0 +1,12 @@
+{
+	"title" : "Test Level",
+	"width" : 5,
+	"tiles" : ["ground","ground","ground","ground","ground",
+				"ground","ground","ground","ground","ground",
+				"ground","ground","ground","ground","ground",
+				"ground","ground","ground","ground","ground",
+				"ground","ground","ground","ground","ground",
+				"ground","ground","ground","ground","ground",
+				"ground","ground","ground","ground","ground"],
+	"startPos" : [2,2]
+}
