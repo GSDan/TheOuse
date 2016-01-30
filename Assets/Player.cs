@@ -4,12 +4,15 @@ using System;
 
 public class Player : Unit {
 
+    public Transform ProjectilePoint;
+    public GameObject ProjectilePrefab;
     public float AttackCooldown = 0.3f;
     bool attacking = false;
 
     // Use this for initialization
-    void Start () {
-	
+    void Start ()
+    {
+        currentHealth = MaxHealth;
 	}
 	
 	// Update is called once per frame
@@ -22,7 +25,7 @@ public class Player : Unit {
     {
         bool walking = false;
 
-        if(Input.GetKey(KeyCode.Space) && !attacking)
+        if(Input.GetKeyUp(KeyCode.Space) && !attacking)
         {
             Attack(null);
             return;
@@ -63,6 +66,9 @@ public class Player : Unit {
         Anim.SetBool("Attacking", true);
         attacking = true;
         StartCoroutine(AttackDelay(AttackCooldown));
+
+        GameObject projectile = (GameObject)Instantiate(ProjectilePrefab, ProjectilePoint.position, Quaternion.identity);
+
     }
 
     IEnumerator AttackDelay(float time)

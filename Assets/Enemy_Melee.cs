@@ -9,10 +9,18 @@ public class Enemy_Melee : Unit {
     public float AttackRange = 0.5f;
     public int AttackPower = 10;
 
+    private static Player player;
+
     // Use this for initialization
-    void Start () {
-	
-	}
+    void Start ()
+    {
+        if(player == null)
+        {
+            Player[] found = GameObject.FindObjectsOfType<Player>();
+            if(found != null && found.Length > 0)
+                player = found[0];
+        }
+    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -26,6 +34,19 @@ public class Enemy_Melee : Unit {
             }
 
             Vector3 thisPos = gameObject.transform.position;
+
+            if (player != null)
+            {
+                Vector3 playerPos = player.transform.position;
+
+                //Attack the player if nearby
+                if (Math.Abs(playerPos.x - thisPos.x) <= AttackRange && Math.Abs(playerPos.y - thisPos.y) <= AttackRange)
+                {
+                    Attack(player);
+                    return;
+                }
+            }
+            
             Vector3 targetPos = Target.transform.position;
 
             float horizVal = 0;
