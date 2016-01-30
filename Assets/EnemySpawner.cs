@@ -8,7 +8,7 @@ public class EnemySpawner : MonoBehaviour {
     public int EnemiesToSpawn = 5;
     private int enemiesSpawned = 0;
 
-    public float MinY = 0;
+    public float MinY = 2;
     public float MaxY = 14;
     public float MaxSpawnDelaySecs = 3;
     public float MinSpawnDelaySecs = 0;

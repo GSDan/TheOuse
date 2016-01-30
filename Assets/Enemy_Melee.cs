@@ -92,6 +92,8 @@ public class Enemy_Melee : Unit {
     {
         base.OnDeath();
         Anim.SetTrigger("Death");
+        Destroy(HealthBar.gameObject);
+        gameObject.GetComponent<BoxCollider2D>().enabled = false;
     }
 
     public override void Attack(Destructable target)
