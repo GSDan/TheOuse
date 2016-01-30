@@ -36,7 +36,7 @@ public class Player : Unit {
         }
     }
 
-    public override void Attack()
+    public override void Attack(Destructable target)
     {
         throw new NotImplementedException();
     }

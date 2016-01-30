@@ -3,6 +3,7 @@ using System.Collections;
 
 public abstract class Unit : Destructable {
 
+    public Animator Anim;
     public bool IsEnemy = true;
     public float WalkingSpeed = 1.5f;
 
@@ -17,5 +18,5 @@ public abstract class Unit : Destructable {
 	
 	}
 
-    public abstract void Attack();
+    public abstract void Attack(Destructable target);
 }
