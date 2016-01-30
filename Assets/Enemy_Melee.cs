@@ -14,6 +14,8 @@ public class Enemy_Melee : Unit {
     // Use this for initialization
     void Start ()
     {
+        currentHealth = MaxHealth;
+
         if(player == null)
         {
             Player[] found = GameObject.FindObjectsOfType<Player>();
@@ -27,6 +29,8 @@ public class Enemy_Melee : Unit {
     {
         try
         {
+            if (Destroyed) return;
+
             if(Target == null)
             {
                 if(!Destroyed) OnDeath();
@@ -95,4 +99,5 @@ public class Enemy_Melee : Unit {
         target.Damage(AttackPower * Time.deltaTime);
         Anim.SetBool("Attacking", true);
     }
+
 }

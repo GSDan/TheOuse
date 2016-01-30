@@ -8,6 +8,8 @@ public class Projectile : MonoBehaviour {
     public float Lifetime = 10;
     public float Damage = 10;
 
+    private bool spent = false;
+
 	// Use this for initialization
 	void Start () {
 
@@ -27,5 +29,20 @@ public class Projectile : MonoBehaviour {
 
         transform.Translate(Speed * Time.deltaTime, 0, 0);
 
+    }
+
+    void OnCollisionEnter2D(Collision2D coll)
+    {
+        if (spent) return;
+        spent = true;
+
+        Destructable obj = coll.gameObject.GetComponent<Destructable>();
+
+        if(obj != null)
+        {
+            obj.Damage(Damage);
+        }
+
+        Destroy(gameObject);
     }
 }

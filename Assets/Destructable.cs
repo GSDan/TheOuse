@@ -54,7 +54,7 @@ public class Destructable : MonoBehaviour {
     public void Kill()
     {
         OnDeath();
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 
 }

@@ -35,7 +35,6 @@ public class Player : Unit {
             return;
         }
 
-
         if (Input.GetKey("up"))
         {
             walking = true;
