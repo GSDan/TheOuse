@@ -4,8 +4,8 @@ using System.Collections;
 public class EnemySpawner : MonoBehaviour {
 
     public Destructable Target;
-    public GameObject EnemyPrefab;
-    public int EnemiesToSpawn = 5;
+    private GameObject EnemyPrefab;
+    private int EnemiesToSpawn = 0;
     private int enemiesSpawned = 0;
 
     public float MinY = 2;
@@ -38,7 +38,15 @@ public class EnemySpawner : MonoBehaviour {
         }
     }
 
-    public void SpawnEnemy()
+    public void SpawnEnemies(GameObject prefab, int num)
+    {
+        EnemyPrefab = prefab;
+        EnemiesToSpawn = num;
+        enemiesSpawned = 0;
+        TimeSinceLastSpawn = 0;
+    }
+
+    private void SpawnEnemy()
     {
         float YLoc = Random.Range(MinY, MaxY);
 
