@@ -6,6 +6,7 @@ public class Player : Unit {
 
     public Transform ProjectilePoint;
     public GameObject ProjectilePrefab;
+    public GameManager GameManager;
     public float AttackCooldown = 0.3f;
     bool attacking = false;
     float direction;
@@ -20,6 +21,10 @@ public class Player : Unit {
 	// Update is called once per frame
 	void Update ()
     {
+        if(Destroyed)
+        {
+            return;
+        }
         CheckMovement();
 	}
 
@@ -37,24 +42,24 @@ public class Player : Unit {
             return;
         }
 
-        if (Input.GetKey("up"))
+        if (Input.GetKey("up") || Input.GetKey(KeyCode.W))
         {
             walking = true;
             transform.Translate(0, this.WalkingSpeed * Time.deltaTime, 0);
         }
-        else if (Input.GetKey("down"))
+        else if (Input.GetKey("down") || Input.GetKey(KeyCode.S))
         {
             walking = true;
             transform.Translate(0, -this.WalkingSpeed * Time.deltaTime, 0);
         }
 
-        if (Input.GetKey("right"))
+        if (Input.GetKey("right") || Input.GetKey(KeyCode.D))
         {
             walking = true;
             transform.Translate(this.WalkingSpeed * Time.deltaTime, 0, 0);
             transform.localScale = new Vector2(direction, transform.localScale.y);
         }
-        else if (Input.GetKey("left"))
+        else if (Input.GetKey("left") || Input.GetKey(KeyCode.A))
         {
             walking = true;
             transform.Translate(-this.WalkingSpeed * Time.deltaTime, 0, 0);
@@ -84,5 +89,15 @@ public class Player : Unit {
         // Code to execute after the delay
         Anim.SetBool("Attacking", false);
         attacking = false;
+    }
+
+    public override void OnDeath()
+    {
+        base.OnDeath();
+        Anim.SetTrigger("Death");
+        Destroy(HealthBar.gameObject);
+        gameObject.GetComponent<BoxCollider2D>().enabled = false;
+
+        GameManager.PlayerDied();
     }
 }

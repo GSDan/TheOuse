@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Assets;
 
 public class EnemySpawner : MonoBehaviour {
 
     public Destructable Target;
-    private GameObject EnemyPrefab;
+    private MobSpawnEvent[] Mobs;
     private int EnemiesToSpawn = 0;
     private int enemiesSpawned = 0;
+    private int typesSpawned = 0;
 
     public float MinY = 2;
     public float MaxY = 14;
@@ -25,7 +27,7 @@ public class EnemySpawner : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        if (enemiesSpawned >= EnemiesToSpawn) return;
+        if (Mobs == null || typesSpawned >= Mobs.Length) return;
 
         TimeSinceLastSpawn += Time.deltaTime;
 
@@ -38,10 +40,10 @@ public class EnemySpawner : MonoBehaviour {
         }
     }
 
-    public void SpawnEnemies(GameObject prefab, int num)
+    public void SpawnEnemies(MobSpawnEvent[] given)
     {
-        EnemyPrefab = prefab;
-        EnemiesToSpawn = num;
+        Mobs = given;
+        typesSpawned = 0;
         enemiesSpawned = 0;
         TimeSinceLastSpawn = 0;
     }
@@ -50,10 +52,16 @@ public class EnemySpawner : MonoBehaviour {
     {
         float YLoc = Random.Range(MinY, MaxY);
 
-        GameObject enemy = (GameObject)Instantiate(EnemyPrefab, new Vector3(transform.position.x, YLoc, 0), Quaternion.identity);
+        GameObject enemy = (GameObject)Instantiate(Mobs[typesSpawned].EnemyPrefab, new Vector3(transform.position.x, YLoc, 0), Quaternion.identity);
 
         enemy.GetComponent<Enemy_Melee>().Target = Target;
 
         enemiesSpawned++;
+
+        if(enemiesSpawned >= Mobs[typesSpawned].Num)
+        {
+            typesSpawned++;
+            enemiesSpawned = 0;
+        }
     }
 }

@@ -7,7 +7,7 @@ public class Destructable : MonoBehaviour {
     public ParticleSystem[] DeathParticles; 
     public int MaxHealth = 100;
     protected float currentHealth;
-    protected bool Destroyed = false;
+    public bool Destroyed = false;
 
 	// Use this for initialization
 	void Start ()
@@ -29,18 +29,21 @@ public class Destructable : MonoBehaviour {
 
     public virtual void OnDeath()
     {
-        // Play death animation + noise
-        Destroyed = true;
-
-        if(DeathParticles != null)
+        if(!Destroyed)
         {
-            foreach(ParticleSystem ps in DeathParticles)
-            {
-                ps.Play();
-            }
-        }
+            // Play death animation + noise
+            Destroyed = true;
 
-        StartCoroutine(RemoveAfterDelay(10));
+            if (DeathParticles != null)
+            {
+                foreach (ParticleSystem ps in DeathParticles)
+                {
+                    ps.Play();
+                }
+            }
+
+            StartCoroutine(RemoveAfterDelay(10));
+        }
     }
 
     IEnumerator RemoveAfterDelay(float time)

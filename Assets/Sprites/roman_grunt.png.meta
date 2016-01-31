@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 2acf66faed711bc49819fe231e2ddf41
-timeCreated: 1454163024
+timeCreated: 1454252634
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -11,6 +11,7 @@ TextureImporter:
     21300008: roman_grunt_head
     21300010: roman_grunt_leg2
     21300012: shadow
+    21300014: love
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -290,21 +291,39 @@ TextureImporter:
     - name: shadow
       rect:
         serializedVersion: 2
-        x: 37
-        y: 282
+        x: 34
+        y: 240
         width: 179
         height: 49
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -89.5, y: 24.5}
-        - {x: -89.5, y: -17.5}
-        - {x: -74.5, y: -24.5}
-        - {x: 64.5, y: -24.5}
-        - {x: 89.5, y: -20.5}
-        - {x: 89.5, y: 11.5}
-        - {x: 77.5, y: 24.5}
+      - - {x: -64.5, y: 24.5}
+        - {x: -89.5, y: 12.5}
+        - {x: -89.5, y: -24.5}
+        - {x: 89.5, y: -24.5}
+        - {x: 89.5, y: 10.5}
+        - {x: 62.5, y: 24.5}
+    - name: love
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 330
+        width: 106
+        height: 140
+      alignment: 9
+      pivot: {x: 0.4565005, y: 0.18711416}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -21.389053, y: 113.804016}
+        - {x: -48.389053, y: 86.804016}
+        - {x: -48.389053, y: -14.195984}
+        - {x: -38.389053, y: -26.195984}
+        - {x: 26.610947, y: -26.195984}
+        - {x: 57.610947, y: 33.804016}
+        - {x: 57.610947, y: 92.804016}
+        - {x: 42.610947, y: 113.804016}
     outline: []
   spritePackingTag: 
   userData: 

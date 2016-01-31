@@ -39,7 +39,7 @@ public class Enemy_Melee : Unit {
 
             Vector3 thisPos = gameObject.transform.position;
 
-            if (player != null)
+            if (player != null && !player.Destroyed)
             {
                 Vector3 playerPos = player.transform.position;
 
@@ -94,6 +94,8 @@ public class Enemy_Melee : Unit {
         Anim.SetTrigger("Death");
         Destroy(HealthBar.gameObject);
         gameObject.GetComponent<BoxCollider2D>().enabled = false;
+
+        GameManager.EnemiesToKill--;
     }
 
     public override void Attack(Destructable target)

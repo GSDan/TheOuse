@@ -17,6 +17,7 @@ public class CameraManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+        if (Follow == null) return;
         Vector3 newPos = new Vector3(Follow.transform.position.x, Follow.transform.position.y, transform.position.z);
 
         transform.position = newPos;
