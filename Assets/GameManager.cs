@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour {
     public Text Dialogue;
     public EnemySpawner spawner;
     public GameObject RomanPrefab;
+    public GameObject GladPrefab;
 
     GameState currentState = GameState.StartDialogue;
     bool startedDialogue = false;
@@ -86,6 +87,11 @@ public class GameManager : MonoBehaviour {
                         {
                             EnemyPrefab = RomanPrefab,
                             Num = 3
+                        },
+                        new MobSpawnEvent
+                        {
+                            EnemyPrefab = GladPrefab,
+                            Num = 3
                         }
                     }
                 },
@@ -107,6 +113,11 @@ public class GameManager : MonoBehaviour {
                         {
                             EnemyPrefab = RomanPrefab,
                             Num = 15
+                        },
+                        new MobSpawnEvent
+                        {
+                            EnemyPrefab = GladPrefab,
+                            Num = 2
                         }
                     }
                 },
@@ -127,6 +138,11 @@ public class GameManager : MonoBehaviour {
                         {
                             EnemyPrefab = RomanPrefab,
                             Num = 25
+                        },
+                        new MobSpawnEvent
+                        {
+                            EnemyPrefab = GladPrefab,
+                            Num = 3
                         }
                     }
                 },
@@ -147,7 +163,12 @@ public class GameManager : MonoBehaviour {
                         new MobSpawnEvent
                         {
                             EnemyPrefab = RomanPrefab,
-                            Num = 35
+                            Num = 32
+                        },
+                        new MobSpawnEvent
+                        {
+                            EnemyPrefab = GladPrefab,
+                            Num = 3
                         }
                     }
                 }
@@ -216,7 +237,7 @@ public class GameManager : MonoBehaviour {
 
                 foreach (MobSpawnEvent mobs in thisWave.Mobs)
                 {
-                    EnemiesToKill = mobs.Num;
+                    EnemiesToKill += mobs.Num;
                 }
 
                 spawner.SpawnEnemies(thisWave.Mobs);
