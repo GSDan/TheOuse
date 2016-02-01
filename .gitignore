@@ -16,7 +16,6 @@ ExportedObj/
 *.user
 *.userprefs
 *.pidb
-*.pdb
 *.booproj
 *.svd
 
@@ -28,6 +27,8 @@ ExportedObj/
 sysinfo.txt
 
 # Builds
+player_win_x86.pdb
+player_win_x86_s.pdb
 *.apk
 *.exe
 *.unitypackage
